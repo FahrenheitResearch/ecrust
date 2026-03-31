@@ -1,0 +1,9 @@
+.pytest_cache/
+__pycache__/
+target/
+dist/
+dist-check/
+*.pyc
+*.pyo
+*.pyd
+python/ecrust/_ecrust*.pyd

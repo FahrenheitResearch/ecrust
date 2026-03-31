@@ -1,0 +1,32 @@
+[build-system]
+requires = ["maturin>=1.0,<2.0"]
+build-backend = "maturin"
+
+[project]
+name = "ecrust"
+version = "0.1.0"
+description = "Rust-native drop-in Python import replacement for eccodes"
+requires-python = ">=3.9"
+readme = "README.md"
+license = { text = "MIT" }
+license-files = ["LICENSE"]
+keywords = ["grib", "eccodes", "meteorology", "weather", "rust"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Rust",
+    "Programming Language :: Python :: Implementation :: CPython",
+    "Topic :: Scientific/Engineering :: Atmospheric Science",
+]
+dependencies = [
+    "numpy>=1.20",
+]
+
+[project.urls]
+Homepage = "https://github.com/FahrenheitResearch/ecrust"
+Repository = "https://github.com/FahrenheitResearch/ecrust"
+
+[tool.maturin]
+python-source = "python"
+module-name = "ecrust._ecrust"
+features = ["pyo3/extension-module"]
