@@ -40,8 +40,12 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install maturin numpy pytest eccodes
 
-      - name: Build extension in-place
-        run: maturin develop --release
+      - name: Build wheel
+        run: maturin build --release --interpreter python --out dist
+
+      - name: Install built wheel
+        run: |
+          python -c "import pathlib, subprocess, sys; wheels = sorted(pathlib.Path('dist').glob('*.whl')); assert wheels, 'no wheel built'; subprocess.check_call([sys.executable, '-m', 'pip', 'install', '--force-reinstall', str(wheels[-1])])"
 
       - name: Run test suite
         run: pytest -q
